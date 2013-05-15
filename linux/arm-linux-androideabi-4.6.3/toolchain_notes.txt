@@ -1,0 +1,109 @@
+TOOLCHAIN NOTES:
+----------------
+
+GCC v4.6.3
+GDB v7.1.x
+MPC v0.9
+GMP v5.0.5
+MPFR v2.4.2
+BinUtil v2.21
+
+
+BUILDING FROM SOURCE:
+---------------------
+
+The following was used to build this package from source
+
+1) Get initial toolchain source code
+repo init -u https://android.googlesource.com/toolchain/manifest
+
+2) sync and lock the projects to the following versions (or drop this over the current manifest and sync)
+(.repo/manifest.xml)
+
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote fetch=".." name="aosp" review="https://android-review.googlesource.com/"/>
+  
+  <default remote="aosp" revision="master" sync-j="4"/>
+  
+  <project name="toolchain/avr-libc" path="avr-libc" revision="9b9d708c6a8a66a75d9fdf8eb6b35305bb1712e3"/>
+  <project name="toolchain/benchmark" path="benchmark" revision="c7949005d4283c0be18307ffb8410780e9a4a0c3"/>
+  <project name="toolchain/binutils" path="binutils" revision="07e1f1545d1f8f81a67ce17256f96df8ab7f70e3"/>
+  <project name="toolchain/build" path="build" revision="6d144f8edfd3879d3c241713331460d9a6e3ee86"/>
+  <project name="toolchain/expat" path="expat" revision="40172a0ae9d40a068f1e1a48ffcf6a1ccf765ed5"/>
+  <project name="toolchain/gcc" path="gcc" revision="5f2f4ef69e2f64970aad2c303a529c49789021d8"/>
+  <project name="toolchain/gdb" path="gdb" revision="b3007e980fad8bf4fc0fca1d3823aff648339798"/>
+  <project name="toolchain/gmp" path="gmp" revision="e6b9669dafc6a5f83c80b4b4176359b78bccdc90"/>
+  <project name="toolchain/gold" path="gold" revision="8d401cf711539af5a2f78d12447341d774892618"/>
+  <project name="toolchain/mpc" path="mpc" revision="a4109ccc6e07f72f41c397a17fdfbed3e5e19c66"/>
+  <project name="toolchain/mpfr" path="mpfr" revision="bde731396c38c8d5b0bca800aace6a690d0d2978"/>
+</manifest>
+
+3) Get the existing toolchain (for sysroot)
+git clone https://android.googlesource.com/platform/prebuilt -b master
+
+4) checkout the correct version
+
+cd prebuilt
+git checkout -f a4062cc40fcaa0776dc880ce591b4c515d36f420
+cd ..
+
+5) cd into the mpc directory
+cd mpc
+
+6) download mpc v0.9 
+wget http://www.multiprecision.org/mpc/download/mpc-0.9.tar.gz
+
+7) cd into the gcc directory
+cd ../gcc
+
+8) Download gcc-4.6.3.tar.bz2 from one of the mirrors
+http://www.gnu.org/software/gcc/gcc-4.6/
+
+(example for the ftp.mirrorservice.org mirror valid as of May29th 2012):
+
+wget ftp://ftp.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-4.6.3/gcc-4.6.3.tar.bz2
+
+9) Download the patch at: http://gcc.gnu.org/bugzilla/attachment.cgi?id=24879
+
+
+wget 'http://gcc.gnu.org/bugzilla/attachment.cgi?id=24879'
+
+10) extract gcc 
+
+tar -xjvf gcc-4.6.3.tar.bz2
+
+11) change into the gcc-4.6.3 directory
+
+cd gcc-4.6.3
+
+12) apply the patch
+patch -p 1 < ../attachment.cgi\?id\=24879
+
+13) cd to the root of the toolchain repo, then cd into build
+
+cd ../../build/
+
+14) edit Makefile.in and apply the following:
+
+diff --git a/Makefile.in b/Makefile.in
+index eb78661..bb22b35 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -444,7 +444,7 @@ CFLAGS_FOR_TARGET += -DTARGET_POSIX_IO -fno-short-enums
+ # ARM specific options.
+ ifeq ($(target_cpu),arm)
+ GCC_CONFIG_ARGS += --with-float=soft --with-fpu=vfp --with-arch=armv5te \
+-       --enable-target-optspace
++       --enable-target-optspace --disable-libquadmath --with-pic
+ 
+ ifneq ($(target_os),linux-androideabi)
+ GCC_CONFIG_ARGS += --with-abi=aapcs
+
+15) run
+CFLAGS="-m32 -fPIC" ./configure --with-gcc-version=4.6.3 --with-binutils-version=2.21 --with-gmp-version=5.0.5 --with-mpfr-version=2.4.2 --with-gdb-version=7.1.x --with-mpc-version=0.9 --with-sysroot=`pwd`/../prebuilt/linux-x86/toolchain/i686-linux-glibc2.7-4.4.3/sysroot --target arm-linux-androideabi --host i686 --build i686
+
+16) CFLAGS="-m32" make build
+(optional add the '-j <number of CPU cores +1>' to this step to speed up the build)
+
+17) make prefix=`pwd`/../toolchain-4.6.3 install
