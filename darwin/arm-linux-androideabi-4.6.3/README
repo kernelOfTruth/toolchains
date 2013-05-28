@@ -1,0 +1,10 @@
+NOTICE:
+
+OSX by default is missing elf.h in /usr/include/
+
+The linux kenrel be default builds some tools on the local system that
+require elf.h thus may return an error due to the missing file
+
+The fix is to manually install the elf.h in this package to your system
+
+sudo cp elf.h /usr/include/elf.h
