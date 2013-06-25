@@ -1,0 +1,211 @@
+﻿### LICENSE:
+#
+# Copyright (C) 2011 Ahmad Amarullah ( http://amarullz.com/ )
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+### LANGUAGE STRING RESOURCE FILE
+#
+#   Language  : English
+#   By        : amarullz + google translate
+#
+
+#
+#--- COMMON SYSTEM STRING RESOURCE
+#
+text_ok=OK
+text_next=Next >
+text_back=< Back
+text_yes=Agree
+text_no=Disagree
+text_about=About
+text_calibrating=Touch Screen Calibrate
+text_quit=Exit
+text_quit_msg=Are you sure to exit?
+text_finish=Finish
+
+#
+#-- CUSTOM STRING RESOURCE
+#
+common.for=on your
+
+langtest.title=Language Test
+langtest.multiline=This English file is langs/en.lang\
+If you have better translation, modify it by your self.
+
+Thanks to amarullz for the script.
+Thank you for using AROMA Installer script.
+
+#-- End of string without any backslash for multiline text
+
+themes.title=Choose Theme
+themes.desc=To test this script, please choose theme:
+
+welcome.title=Welcome
+welcome.text1=About to install
+welcome.text2=How to use this wizard? Try Volume Up/Down, Power/Home button and TouchScreen. Attention: Recovery is a resource limited UI, please operate smoothly to avoid crash or freeze. If crashed or freezed, reboot and reflash.
+welcome.version=Version
+welcome.codename=Author
+welcome.updated=Date
+welcome.next=Press NEXT to go on...
+
+terms.title=Agreement
+terms.desc=Agreement in both English and Chinese
+terms.check=I agree...
+terms.confirm=Please read and agree...
+
+kernel.title=Setup Option
+kernel.desc=Setup Option. Choose whether to install the kernel image and the drivers. If you just want to alter settings, select Modify Settings. Try Volume Up/Down, Power/Home button and TouchScreen.
+kernel.install=Typical Install
+kernel.install.desc=Install the kernel image and make the settings. This setting can be used on TouchWiz ICS, TouchWiz JB and CM9 or other AOSP ICS.
+kernel.libraries=New Install with Mali Libraries
+kernel.libraries.desc=Install the kernel image with the Mali libraries and make the settings. Mali libraries are needed by CM10 or later AOSP JB, TouchWiz roms with old HydraCore also need to reflash the libraries.
+kernel.addlibraries=Install Mali Libraries
+kernel.addlibraries.desc=This option just reflash the libraries to fix the problems caused by the missing libraries such as blach screen or bootloop.
+kernel.no=Modify Settings
+kernel.no.desc=Modify the settings without install the kernel image. Be sure to do this on a same kernel version.
+
+romtype.title=System ROM type
+romtype.desc=Choose your ROM type. If you are not sure, select Automatic. Try Volume Up/Down, Power/Home button and TouchScreen.
+romtype.atcore=Automatic
+romtype.atcore.desc=@@MAXFUNAME@@ will detect the system type automaticlly. If you don't know your system type, try this selection. If you meet bootloop after selecting this, reflash and try other selections.
+romtype.twcore=TouchWiz
+romtype.twcore.desc=@@MAXFUNAME@@ will run with TouchWiz init scripts. Typical ROM: Stock, Ultimate, ...
+romtype.cmcore=AOSP
+romtype.cmcore.desc=@@MAXFUNAME@@ will run with AOSP init scripts. Typical ROM: CM series, AOKP series, SlimBean series, JellyBam series, PA series possibly ……
+romtype.micore=MIUI
+romtype.micore.desc=@@MAXFUNAME@@ will run with MIUI init scripts. Typical ROM: MIUI Official ROM，RocketMIUI
+
+cpumax.title=Maximum CPU Frequency
+cpumax.desc=Choose your maximum CPU frequency. If you are not sure, select 1400Mhz which is stock default. Try Volume Up/Down, Power/Home button and TouchScreen.
+cpumax.eight=1600MHz
+cpumax.eight.desc=@@MAXFUNAME@@ will use 1600MHz as the maximum CPU frequency. Caution: This value is not stock value, may cause instability.
+cpumax.seven=1400MHz
+cpumax.seven.desc=@@MAXFUNAME@@ will use 1400MHz as the maximum CPU frequency. This value is stock maximum value which is safe to use.
+cpumax.six=1200MHz
+cpumax.six.desc=@@MAXFUNAME@@ will use 1200MHz as the maximum CPU frequency. This value is stock maximum value which is safe to use.
+cpumax.five=1000Mhz
+cpumax.five.desc=@@MAXFUNAME@@ will use 1000MHz as the maximum CPU frequency. This value is stock maximum value which is safe to use.
+cpumax.four=800Mhz
+cpumax.four.desc=@@MAXFUNAME@@ will use 800MHz as the maximum CPU frequency. This value is stock maximum value which is safe to use.
+
+cpumin.title=Minimum CPU Frequency
+cpumin.desc=Choose your minimum CPU frequency. If you are not sure, select 200Mhz which is stock default. Try Volume Up/Down, Power/Home button and TouchScreen.
+cpumin.four=800Mhz
+cpumin.four.desc=@@MAXFUNAME@@ will use 800MHz as the minimum CPU frequency. This value is stock maximum value which is safe to use.
+cpumin.three=500MHz
+cpumin.three.desc=@@MAXFUNAME@@ will use 500MHz as the minimum CPU frequency. This value is stock maximum value which is safe to use.
+cpumin.two=200MHz
+cpumin.two.desc=@@MAXFUNAME@@ will use 200MHz as the minimum CPU frequency. This value is stock minimum value which is safe to use.
+cpumin.one=100MHz
+cpumin.one.desc=@@MAXFUNAME@@ will use 100MHz as the minimum CPU frequency. Caution: This value is not stock value, may cause instability.
+
+cpugov.title=CPU Governors
+cpugov.desc=Choose your CPU Governor. If you are not sure, select Ondemand which is quite balanced. Try Volume Up/Down, Power/Home button and TouchScreen.
+cpugov.ondemand=Ondemand
+cpugov.ondemand.desc=@@MAXFUNAME@@ will use Ondemand governor.
+cpugov.conservative=Conservative
+cpugov.conservative.desc=@@MAXFUNAME@@ will use Conservative governor.
+cpugov.pegasusq=PegasusQ
+cpugov.pegasusq.desc=@@MAXFUNAME@@ will use PegasusQ governor.
+cpugov.lulzactive=Lulzactive
+cpugov.lulzactive.desc=@@MAXFUNAME@@ will use Lulzactive governor.
+cpugov.smartass=Smartass
+cpugov.smartass.desc=@@MAXFUNAME@@ will use Smartass governor.
+cpugov.smartass2=Smartass v2
+cpugov.smartass2.desc=@@MAXFUNAME@@ will use Smartass v2 governor.
+cpugov.lagfree=Lagfree
+cpugov.lagfree.desc=@@MAXFUNAME@@ will use Lagfree governor.
+cpugov.interactive=Interactive
+cpugov.interactive.desc=@@MAXFUNAME@@ will use Interactive governor.
+cpugov.adaptive=Adaptive
+cpugov.adaptive.desc=@@MAXFUNAME@@ will use Adaptive governor.
+cpugov.powersave=Powersave
+cpugov.powersave.desc=@@MAXFUNAME@@ will use Powersave governor. Caution: This settng may cause lag.
+cpugov.performance=Performance
+cpugov.performance.desc=@@MAXFUNAME@@ will use Performance governor. Caution: This settng may cause faster battery drain.
+
+iosched.title=I/O Schedulers
+iosched.desc=Choose your I/O Scheduler. If you are not sure, select Noop which is quite balanced. Try Volume Up/Down, Power/Home button and TouchScreen.
+iosched.noop=Noop
+iosched.noop.desc=@@MAXFUNAME@@ will use Noop Scheduler.
+iosched.deadline=Deadline
+iosched.deadline.desc=@@MAXFUNAME@@ will use Deadline Scheduler.
+iosched.sio=SIO
+iosched.sio.desc=@@MAXFUNAME@@ will use SIO Scheduler.
+iosched.cfq=CFQ
+iosched.cfq.desc=@@MAXFUNAME@@ will use CFQ Scheduler.
+iosched.row=ROW
+iosched.row.desc=@@MAXFUNAME@@ will use ROW Scheduler.
+iosched.vr=VR
+iosched.vr.desc=@@MAXFUNAME@@ will use VR Scheduler.
+iosched.zen=ZEN
+iosched.zen.desc=@@MAXFUNAME@@ will use ZEN Scheduler.
+
+other.title=Other Settings
+other.desc=Other settings and tweaks. Try Volume Up/Down, Power/Home button and TouchScreen.
+
+logcat.title=Logcat Module
+logcat.yes=Enable Logcat
+logcat.yes.desc=Logcat will be enabled.
+logcat.no=Disable Logcat
+logcat.no.desc=Logcat will be disabled.
+
+zram.title=zRam with swap support
+zram.yes=Enable zRam with swap support
+zram.yes.desc=zRam with swap support will be enabled.
+zram.no=Disable zRam with swap support
+zram.no.desc=zRam with swap support will be disabled.
+
+seeder.title=Seeder entropy generator
+seeder.yes=Enable Seeder entropy generator
+seeder.yes.desc=Seeder entropy generator will be enabled.
+seeder.no=Disable Seeder entropy generator
+seeder.no.desc=Seeder entropy generator will be disabled.
+
+j4fs.title=Param.LFS partition and J4FS support
+j4fs.yes=Enable Param.LFS partition and J4FS support
+j4fs.yes.desc=Param.LFS partition and J4FS support will be enabled.
+j4fs.no=Disable Param.LFS partition and J4FS support
+j4fs.no.desc=Param.LFS partition and J4FS support will be disabled.
+
+cifs.title=CIFS support
+cifs.yes=Enable CIFS support
+cifs.yes.desc=CIFS support will be enabled.
+cifs.no=Disable CIFS support
+cifs.no.desc=CIFS support will be disabled.
+
+wipe.title=Wipe Caches
+wipe.yes=Wipe Caches
+wipe.yes.desc=Caches will be wiped, including Dalvik Cache.
+wipe.no=Keep Caches
+wipe.no.desc=Caches will not be wiped.
+
+gui.instnow=Install Now
+gui.readyinst=Ready to Install
+gui.readybegin=Install progress is ready.
+gui.press=Press
+gui.tobegin=Begin Installion
+gui.back=Back
+gui.revchg=Review or change options. Click menu to find Exit option.
+gui.insting=Installing
+gui.beinsting= is being installed.
+gui.waitbefore=Please wait till the installion of 
+gui.waitafter= finish. This might take some minutes. If the installion freeze at some point for over 15 minutes, please reboot and reflash.
+gui.donebefore=Successfully installed
+gui.doneafter=. Click Next to go on.
+gui.done=Install Finished
+gui.congrats=Congrats...
+gui.installed= is installed on your device. Caution: The program may not reboot nor response after clicked Finish. Just press the POWER button to force restart. It is safe to do so if the status is 0.
+gui.inststa=Install status:
+gui.reboot=Reboot Now

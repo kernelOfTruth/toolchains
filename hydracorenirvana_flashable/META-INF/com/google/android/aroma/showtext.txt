@@ -1,0 +1,12 @@
+<@center><b><#selectbg_g>@@MAXFUNAME@@ Agreement</#></b></@>
+<*>@@MAXFUNAME@@ is free to download and use.</*>
+<*>No commercial use.</*>
+<*>The author has no responsibility of any of your lose by flashing this.</*>
+<*>Q&A @ http://forum.xda-developers.com/showthread.php?t=2053084</*>
+<*>Not for i717, Korean Galaxy Note, i9228 and i889</*>
+<@center><b><#selectbg_g>@@MAXFUNAME@@ 安装许可</#></b></@>
+<*>@@MAXFUNAME@@免费提供下载免费使用。</*>
+<*>请勿用于商业用途。</*>
+<*>使用过程中造成任何损失或危险作者不承担任何责任。</*>
+<*>网址：http://blog.sina.com.cn/fxy83613/</*>
+<*>无法用于i717、韩版Note、移动i9228以及电信i889</*>

@@ -1,0 +1,12 @@
+# begin @@MAXFUNAME@@ properties
+ro.romtype=automatic
+ro.cpumax=1400000
+ro.cpumin=200000
+ro.cpugov=ondemand
+ro.iosched=noop
+ro.logcat=disable
+ro.zram=disable
+ro.j4fs=enable
+ro.cifs=disable
+ro.seeder=enable
+# end @@MAXFUNAME@@ properties

@@ -1,0 +1,173 @@
+﻿fontresload( "0", "ttf/DroidSansFallback.ttf;ttf/DroidSans.ttf", "12" );
+fontresload( "1", "ttf/DroidSansFallback.ttf;ttf/DroidSans.ttf", "18" );
+theme("ics");
+ini_set("rom_name",    "@@MAXFUNAME@@");
+ini_set("rom_version", "@@MAXFUVERS@@");
+ini_set("rom_author",  "@@MAXFUAUTH@@");
+ini_set("rom_device",  "Galaxy Note");
+ini_set("rom_date",    "@@MAXFUDATE@@");
+menubox(
+  "Language 选择语言",
+  "Please select your language.\n请选择您的语言。\n",
+  "@default",
+  "language.prop",
+  "English",   "English", "@default", #-- selected = 1
+  "简体中文", "简体中文", "@default"  #-- selected = 2
+);
+if prop("language.prop","selected")=="1" then
+  loadlang("en.lang");
+endif;
+if prop("language.prop","selected")=="2" then
+  loadlang("cn.lang");
+endif;
+viewbox(
+  "<~welcome.title>",
+  "<~welcome.text1> <b>"+
+    ini_get("rom_name")+
+    "</b> <~common.for> <b>"+ini_get("rom_device")+"</b>.\n\n"+
+    "<~welcome.text2>\n\n"+
+    "  <~welcome.version>\t: <b><#selectbg_g>"+ini_get("rom_version")+"</#></b>\n"+
+    "  <~welcome.codename>\t: <b><#selectbg_g>"+ini_get("rom_author")+"</#></b>\n"+
+    "  <~welcome.updated>\t: <b><#selectbg_g>"+ini_get("rom_date")+"</#></b>\n\n\n"+
+    "<~welcome.next>",
+  "@welcome"
+);
+agreebox(
+  "<~terms.title>",
+  "<~terms.desc>",
+  "@license",
+  resread("showtext.txt"),
+  "<~terms.check>",
+  "<~terms.confirm>"
+);
+menubox(
+  "<~kernel.title>",
+  "<~kernel.desc>\n",
+  "@default",
+  "kernel.prop",
+  "<~kernel.install>",      "<~kernel.install.desc>",      "@default", #-- selected = 1
+  "<~kernel.libraries>",    "<~kernel.libraries.desc>",    "@default", #-- selected = 2
+  "<~kernel.addlibraries>", "<~kernel.addlibraries.desc>", "@default", #-- selected = 3
+  "<~kernel.no>",           "<~kernel.no.desc>",           "@default"  #-- selected = 4
+);
+menubox(
+  "<~romtype.title>",
+  "<~romtype.desc>\n",
+  "@default",
+  "romtype.prop",
+  "<~romtype.atcore>", "<~romtype.atcore.desc>", "@default", #-- selected = 1
+  "<~romtype.twcore>", "<~romtype.twcore.desc>", "@default", #-- selected = 2
+  "<~romtype.cmcore>", "<~romtype.cmcore.desc>", "@default", #-- selected = 3
+  "<~romtype.micore>", "<~romtype.micore.desc>", "@default"  #-- selected = 4
+);
+menubox(
+  "<~cpumax.title>",
+  "<~cpumax.desc>\n",
+  "@default",
+  "cpumax.prop",
+  "<~cpumax.eight>", "<~cpumax.eight.desc>", "@default", #-- selected = 1
+  "<~cpumax.seven>", "<~cpumax.seven.desc>", "@default", #-- selected = 2
+  "<~cpumax.six>",   "<~cpumax.six.desc>",   "@default", #-- selected = 3
+  "<~cpumax.five>",  "<~cpumax.five.desc>",  "@default", #-- selected = 4
+  "<~cpumax.four>",  "<~cpumax.four.desc>",  "@default"  #-- selected = 5
+);
+menubox(
+  "<~cpumin.title>",
+  "<~cpumin.desc>\n",
+  "@default",
+  "cpumin.prop",
+  "<~cpumin.one>",   "<~cpumin.one.desc>",   "@default", #-- selected = 1
+  "<~cpumin.two>",   "<~cpumin.two.desc>",   "@default", #-- selected = 2
+  "<~cpumin.three>", "<~cpumin.three.desc>", "@default", #-- selected = 3
+  "<~cpumin.four>",  "<~cpumin.four.desc>",  "@default"  #-- selected = 4
+);
+menubox(
+  "<~cpugov.title>",
+  "<~cpugov.desc>\n",
+  "@default",
+  "cpugov.prop",
+  "<~cpugov.ondemand>",     "<~cpugov.ondemand.desc>",     "@default", #-- selected = 1
+  "<~cpugov.conservative>", "<~cpugov.conservative.desc>", "@default", #-- selected = 2
+  "<~cpugov.pegasusq>",     "<~cpugov.pegasusq.desc>",     "@default", #-- selected = 3
+  "<~cpugov.lulzactive>",   "<~cpugov.lulzactive.desc>",   "@default", #-- selected = 4
+  "<~cpugov.smartass>",     "<~cpugov.smartass.desc>",     "@default", #-- selected = 5
+  "<~cpugov.smartass2>",    "<~cpugov.smartass2.desc>",    "@default", #-- selected = 6
+  "<~cpugov.lagfree>",      "<~cpugov.lagfree.desc>",      "@default", #-- selected = 7
+  "<~cpugov.interactive>",  "<~cpugov.interactive.desc>",  "@default", #-- selected = 8
+  "<~cpugov.adaptive>",     "<~cpugov.adaptive.desc>",     "@default", #-- selected = 9
+  "<~cpugov.powersave>",    "<~cpugov.powersave.desc>",    "@default", #-- selected = 10
+  "<~cpugov.performance>",  "<~cpugov.performance.desc>",  "@default"  #-- selected = 11
+);
+menubox(
+  "<~iosched.title>",
+  "<~iosched.desc>\n",
+  "@default",
+  "iosched.prop",
+  "<~iosched.noop>",     "<~iosched.noop.desc>",     "@default", #-- selected = 1
+  "<~iosched.deadline>", "<~iosched.deadline.desc>", "@default", #-- selected = 2
+  "<~iosched.sio>",      "<~iosched.sio.desc>",      "@default", #-- selected = 3
+  "<~iosched.cfq>",      "<~iosched.cfq.desc>",      "@default", #-- selected = 4
+  "<~iosched.row>",      "<~iosched.row.desc>",      "@default", #-- selected = 5
+  "<~iosched.vr>",       "<~iosched.vr.desc>",       "@default", #-- selected = 6
+  "<~iosched.zen>",      "<~iosched.zen.desc>",      "@default"  #-- selected = 7
+);
+selectbox(
+  "<~other.title>",
+  "<~other.desc>\n",
+  "@default",
+  "other.prop",
+  "<~wipe.title>",   "",                   2, #-- Group 1. key = "selected.1"
+  "<~wipe.yes>",     "<~wipe.yes.desc>",   0,  #-- selected.1 = 1
+  "<~wipe.no>",      "<~wipe.no.desc>",    1,  #-- selected.1 = 2
+  "<~logcat.title>", "",                   2, #-- Group 2. key = "selected.2"
+  "<~logcat.yes>",   "<~logcat.yes.desc>", 0,  #-- selected.2 = 1
+  "<~logcat.no>",    "<~logcat.no.desc>",  1,  #-- selected.2 = 2
+  "<~zram.title>",   "",                   2, #-- Group 3. key = "selected.3"
+  "<~zram.yes>",     "<~zram.yes.desc>",   0,  #-- selected.3 = 1
+  "<~zram.no>",      "<~zram.no.desc>",    1,  #-- selected.3 = 2
+  "<~seeder.title>", "",                   2, #-- Group 4. key = "selected.3"
+  "<~seeder.yes>",   "<~seeder.yes.desc>", 1,  #-- selected.3 = 1
+  "<~seeder.no>",    "<~seeder.no.desc>",  0,  #-- selected.3 = 2
+  "<~j4fs.title>",   "",                   2, #-- Group 5. key = "selected.4"
+  "<~j4fs.yes>",     "<~j4fs.yes.desc>",   0,  #-- selected.3 = 1
+  "<~j4fs.no>",      "<~j4fs.no.desc>",    1,  #-- selected.3 = 2
+  "<~cifs.title>",   "",                   2, #-- Group 6. key = "selected.5"
+  "<~cifs.yes>",     "<~cifs.yes.desc>",   0,  #-- selected.3 = 1
+  "<~cifs.no>",      "<~cifs.no.desc>",    1   #-- selected.3 = 2
+);
+ini_set("text_next", "<~gui.instnow>");
+viewbox(
+    "<~gui.readyinst>",
+    "<~gui.readybegin>\n\n"+
+    "<~gui.press> <b><~gui.instnow></b> <~gui.tobegin>\n\n"+
+    "<~gui.press> <b><~gui.back></b> <~gui.revchg>",
+    "@install"
+);
+ini_set("text_next", "<~text_next>");
+setvar("retstatus",
+    install(
+        "<~gui.insting>",
+        "<b>"+ini_get("rom_name")+"</b> <~gui.beinsting>\n\n"+
+        "<~gui.waitbefore> <b>"+ini_get("rom_name")+
+        "</b><~gui.waitafter>",
+        "@install",
+        "<~gui.donebefore> <b>"+ini_get("rom_name")+
+        "</b><~gui.doneafter>"
+    )
+);
+ini_set("text_next", "<~text_finish>");
+checkviewbox(
+    "<~gui.done>",
+    "<#selectbg_g><b><~gui.congrats></b></#>\n\n"+
+    "<b>"+ini_get("rom_name")+"</b> <~gui.installed>\n\n"+
+    "<~gui.inststa> "+getvar("retstatus")+"\n\n",
+    "@welcome",
+    "<~gui.reboot>",
+    "1",
+    "reboot_it"
+);
+if
+  getvar("reboot_it")=="1"
+then
+  reboot("onfinish");
+endif;

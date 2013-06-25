@@ -1,0 +1,211 @@
+﻿### LICENSE:
+#
+# Copyright (C) 2011 Ahmad Amarullah ( http://amarullz.com/ )
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+### LANGUAGE STRING RESOURCE FILE
+#
+#   Language  : 简体中文
+#   By        : amarullz + google translate + MaxFu
+#
+
+#
+#--- COMMON SYSTEM STRING RESOURCE
+#
+text_ok=确定
+text_next=下一步 >
+text_back=< 返回
+text_yes=同意
+text_no=放弃
+text_about=关于
+text_calibrating=屏幕校准
+text_quit=退出安装
+text_quit_msg=你确定要退出安装吗？
+text_finish=完成
+
+#
+#-- CUSTOM STRING RESOURCE
+#
+common.for=到您的
+
+langtest.title=语言测试
+langtest.multiline=这个简体中文文件在：langs/cn.lang\
+如果你有更好的解释，请自行打开.lang文件修改其中内容。
+
+感谢amarullz 提供的智能刷机脚本。
+感谢您使用 AROMA Installer智能刷机脚本。
+
+#-- End of string without any backslash for multiline text
+
+themes.title=选择主题
+themes.desc=要在此安装测试使用，请选择安装的主题：
+
+welcome.title=欢迎
+welcome.text1=你即将安装
+welcome.text2=无从下手？试试音量键和电源键以及触摸屏。但请注意：由于Recovery资源冗余较少，操作时请勿动作过快。
+welcome.version=版本
+welcome.codename=作者
+welcome.updated=日期
+welcome.next=按下一步继续安装...
+
+terms.title=条款和许可以及更新日志
+terms.desc=请仔细阅读@@MAXFUNAME@@安装条款和以下许可。
+terms.check=我同意本条款及许可...
+terms.confirm=请认真阅读协议并同意...
+
+kernel.title=安装选项
+kernel.desc=决定是否要安装新的内核镜像以及相关驱动。使用音量加键选中下面的选择框，然后用音量减键选择相应的选项，电源键选择。
+kernel.install=典型安装
+kernel.install.desc=安装内核镜像并进行设置。通常用于TouchWiz ICS、TouchWiz JB以及CM9等AOSP ICS固件。
+kernel.libraries=安装内核镜像与Mali驱动库
+kernel.libraries.desc=安装内核镜像与Mali驱动库并进行设置。通常用于CM10等更新的AOSP JB或者安装过旧版本HydraCore的TouchWiz、AOSP固件。
+kernel.addlibraries=单独安装Mali驱动库
+kernel.addlibraries.desc=单独安装Mali驱动库并进行设置。用于修复由于Mali驱动库缺失或冲突造成的黑屏、无限重启等问题。
+kernel.no=修改设置
+kernel.no.desc=仅修改设置，不安装内核镜像与Mali驱动库。只适用于已安装此版本内核镜像的设备。
+
+romtype.title=系统ROM类型
+romtype.desc=选择手机已安装系统的版本，请注意此项务必选对。使用音量加键选中下面的选择框，然后用音量减键选择相应的选项，电源键选择。
+romtype.atcore=自动判断
+romtype.atcore.desc=@@MAXFUNAME@@将自动判断系统ROM类型，如果您不确定自己的系统类型，建议选择此项。如果选择此项之后无法启动，请重新进入此安装程序并选择其他系统ROM类型。
+romtype.twcore=TouchWiz
+romtype.twcore.desc=使用TouchWiz（基于官方的ROM）的用户可以选择此项以强制@@MAXFUNAME@@以TouchWiz模式启动，典型ROM：三星官方、Ultimate、……
+romtype.cmcore=AOSP
+romtype.cmcore.desc=使用AOSP的用户请选择此选项以强制@@MAXFUNAME@@以AOSP模式启动，典型ROM：CM系列、AOKP系列、PA系列、SlimBean系列、JellyBam系列、……
+romtype.micore=MIUI
+romtype.micore.desc=使用MIUI的用户请选择此选项以强制@@MAXFUNAME@@以MIUI模式启动，典型ROM：官方MIUI，RocketMIUI
+
+cpumax.title=最大CPU频率
+cpumax.desc=选择最大CPU频率。如果您不确定，请选择原厂设定的1400MHz。使用音量加键选中下面的选择框，然后用音量减键选择相应的选项，电源键选择。
+cpumax.eight=1600MHz
+cpumax.eight.desc=@@MAXFUNAME@@将使用1600MHz作为最大CPU频率。注意：这个数值不是原厂数值，在某些批次的设备上使用可能不稳定。
+cpumax.seven=1400MHz
+cpumax.seven.desc=@@MAXFUNAME@@将使用1400MHz作为最大CPU频率。这个数值是原厂数值，可以安全使用。
+cpumax.six=1200MHz
+cpumax.six.desc=@@MAXFUNAME@@将使用1200MHz作为最大CPU频率。这个数值是原厂数值，可以安全使用。
+cpumax.five=1000Mhz
+cpumax.five.desc=@@MAXFUNAME@@将使用1000MHz作为最大CPU频率。这个数值是原厂数值，可以安全使用。
+cpumax.four=800Mhz
+cpumax.four.desc=@@MAXFUNAME@@将使用800MHz作为最大CPU频率。这个数值是原厂数值，可以安全使用。
+
+cpumin.title=最小CPU频率
+cpumin.desc=选择最小CPU频率。如果您不确定，请选择原厂设定的200MHz。使用音量加键选中下面的选择框，然后用音量减键选择相应的选项，电源键选择。
+cpumin.four=800Mhz
+cpumin.four.desc=@@MAXFUNAME@@将使用800MHz作为最小CPU频率。这个数值是原厂数值，可以安全使用。
+cpumin.three=500MHz
+cpumin.three.desc=@@MAXFUNAME@@将使用500MHz作为最小CPU频率。这个数值是原厂数值，可以安全使用。
+cpumin.two=200MHz
+cpumin.two.desc=@@MAXFUNAME@@将使用200MHz作为最小CPU频率。这个数值是原厂数值，可以安全使用。
+cpumin.one=100MHz
+cpumin.one.desc=@@MAXFUNAME@@将使用100MHz作为最小CPU频率。注意：这个数值不是原厂数值，在某些批次的设备上使用可能不稳定。
+
+cpugov.title=CPU调节器
+cpugov.desc=选择CPU调节器。如果您不确定，请选择较为均衡的Ondemand。使用音量加键选中下面的选择框，然后用音量减键选择相应的选项，电源键选择。
+cpugov.ondemand=Ondemand
+cpugov.ondemand.desc=@@MAXFUNAME@@将使用Ondemand调节器。
+cpugov.conservative=Conservative
+cpugov.conservative.desc=@@MAXFUNAME@@将使用Conservative调节器。
+cpugov.pegasusq=PegasusQ
+cpugov.pegasusq.desc=@@MAXFUNAME@@将使用PegasusQ调节器。
+cpugov.lulzactive=Lulzactive
+cpugov.lulzactive.desc=@@MAXFUNAME@@将使用Lulzactive调节器。
+cpugov.smartass=Smartass
+cpugov.smartass.desc=@@MAXFUNAME@@将使用Smartass调节器。
+cpugov.smartass2=Smartass v2
+cpugov.smartass2.desc=@@MAXFUNAME@@将使用Smartass v2调节器。
+cpugov.lagfree=Lagfree
+cpugov.lagfree.desc=@@MAXFUNAME@@将使用Lagfree调节器。
+cpugov.interactive=Interactive
+cpugov.interactive.desc=@@MAXFUNAME@@将使用Interactive调节器。
+cpugov.adaptive=Adaptive
+cpugov.adaptive.desc=@@MAXFUNAME@@将使用Adaptive调节器。
+cpugov.powersave=Powersave
+cpugov.powersave.desc=@@MAXFUNAME@@将使用Powersave调节器。注意：使用这个调节器可能使设备反应迟钝。
+cpugov.performance=Performance
+cpugov.performance.desc=@@MAXFUNAME@@将使用Performance调节器。注意：使用这个调节器可能增加设备耗电量。
+
+iosched.title=I/O调度器
+iosched.desc=选择I/O调度器. 如果您不确定，请选择较为均衡的Noop。使用音量加键选中下面的选择框，然后用音量减键选择相应的选项，电源键选择。
+iosched.noop=Noop
+iosched.noop.desc=@@MAXFUNAME@@将使用Noop调度器。
+iosched.deadline=Deadline
+iosched.deadline.desc=@@MAXFUNAME@@将使用Deadline调度器。
+iosched.sio=SIO
+iosched.sio.desc=@@MAXFUNAME@@将使用SIO调度器。
+iosched.cfq=CFQ
+iosched.cfq.desc=@@MAXFUNAME@@将使用CFQ调度器。
+iosched.row=ROW
+iosched.row.desc=@@MAXFUNAME@@将使用ROW调度器。
+iosched.vr=VR
+iosched.vr.desc=@@MAXFUNAME@@将使用VR调度器。
+iosched.zen=ZEN
+iosched.zen.desc=@@MAXFUNAME@@将使用ZEN调度器。
+
+other.title=其它设置
+other.desc=其它优化设置。使用音量加键选中下面的选择框，然后用音量减键选择相应的选项，电源键选择。
+
+logcat.title=Logcat日志模块
+logcat.yes=使用Logcat日志模块
+logcat.yes.desc=安装程序会允许使用Logcat日志模块
+logcat.no=不使用Logcat日志模块
+logcat.no.desc=安装程序会禁止使用Logcat日志模块
+
+zram.title=带有SWAP的功能的ZRAM
+zram.yes=使用带有SWAP的功能的ZRAM
+zram.yes.desc=安装程序会允许使用带有SWAP的功能的ZRAM。
+zram.no=不使用带有SWAP的功能的ZRAM
+zram.no.desc=安装程序会禁止使用带有SWAP的功能的ZRAM。
+
+seeder.title=Seeder entropy generator
+seeder.yes=Enable Seeder entropy generator
+seeder.yes.desc=Seeder entropy generator will be enabled.
+seeder.no=Disable Seeder entropy generator
+seeder.no.desc=Seeder entropy generator will be disabled.
+
+j4fs.title=Param.LFS分区及J4FS文件系统支持
+j4fs.yes=使用Param.LFS分区
+j4fs.yes.desc=安装程序会允许使用Param.LFS分区及J4FS文件系统支持。
+j4fs.no=不使用Param.LFS分区及J4FS文件系统支持
+j4fs.no.desc=安装程序会禁止使用Param.LFS分区及J4FS文件系统支持。
+
+cifs.title=CIFS文件系统支持
+cifs.yes=使用CIFS文件系统支持
+cifs.yes.desc=安装程序会允许使用CIFS文件系统支持。
+cifs.no=不使用CIFS文件系统支持
+cifs.no.desc=安装程序会禁止使用CIFS文件系统支持。
+
+wipe.title=缓存处理
+wipe.yes=清除缓存
+wipe.yes.desc=安装程序会在安装之后清除所有缓存（包括Dalvik缓存）
+wipe.no=不清除缓存
+wipe.no.desc=安装程序不会清除缓存
+
+gui.instnow=马上安装
+gui.readyinst=已准备好安装
+gui.readybegin=安装向导已经为安装做好准备
+gui.press=点击
+gui.tobegin=开始安装
+gui.back=返回
+gui.revchg=查看或者更改安装选项。点击菜单键可找到退出选项。
+gui.insting=正在安装
+gui.beinsting=正在被安装。
+gui.waitbefore=请等待安装向导完成
+gui.waitafter=的安装过程。如果安装过程自动退出（未看到安装成功的提示）或者卡在一个地方超过15分钟，请重新启动Recovery并进入安装程序重新进行安装。
+gui.donebefore=安装向导已经成功安装
+gui.doneafter=。点击下一步继续。
+gui.done=安装完成
+gui.congrats=恭喜…
+gui.installed=已经安装到您的设备。注意：在点击“完成”之后可能出现设备不重启也没有反应的现象。只要按住电源键10余秒钟强制设备重启即可。若安装状态为0，说明已经完全按设定安装完毕。
+gui.inststa=安装状态：
+gui.reboot=马上重启设备。
