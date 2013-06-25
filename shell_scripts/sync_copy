@@ -1,0 +1,23 @@
+#!/bin/sh
+
+PLACE=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+LOCATION="android_kernel_samsung_smdk4210"
+MODFILES="hydracorenirvana_modified_source"
+MODOLD="modified_source_files"
+
+cd $PLACE/$MODOLD
+
+read -p "Please input your KEYWORD > " KEYWORD
+echo
+
+grep -r $KEYWORD *
+
+cd $PLACE
+
+read -p "Please input your FILENAME STRING > " STRING
+echo
+
+cd $PLACE/$LOCATION/
+cp --parents $STRING $PLACE/$MODFILES/
+cd $PLACE
+

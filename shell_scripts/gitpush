@@ -1,0 +1,16 @@
+#!/bin/bash
+
+PLACE=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+PREFIX=sources
+
+clear
+echo
+ls $PLACE/$PREFIX
+echo
+read -p "Please input the name of the git as listed > " NAME
+
+echo
+echo -n "Pushing......"
+cd $PLACE/$PREFIX/$NAME
+git push -u origin master
+echo "Done."

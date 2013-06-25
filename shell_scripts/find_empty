@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "# Newline" >> to_empty.sh
+find $1 -type d -empty -exec echo rm -rf {} \; >> to_empty.sh
+# sh to_empty.sh

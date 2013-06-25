@@ -1,0 +1,124 @@
+#!/bin/bash
+
+GOON=$(cat /dev/urandom | head -1 | md5sum | head -c 3)
+PLACE=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+PREFIX=sources
+PATCHES=patches
+
+clear
+echo
+ls "$PLACE/$PREFIX" | while read DIR ; do if [ -d $PLACE/$PREFIX/$DIR/.git ]; then echo $DIR; fi; done
+echo
+echo "Please input the name of the git as listed." 
+read -p "INPUT > " NAME
+while true; do
+    if [ -d "$PLACE/$PREFIX/$NAME" ]; then
+        break
+    else
+        echo
+        echo "Wrong input."
+        read -p "INPUT > " NAME
+    fi
+done
+
+while true; do
+clear
+echo
+ls "$PLACE/$PATCHES" | while read FILE ; do if [ -f $PLACE/$PATCHES/$FILE ]; then echo $FILE; fi; done
+echo
+echo "Please input the name of the patch as listed."
+echo "If you want to make your modifications manually, press ENTER."
+read -p "INPUT > " PATCH
+
+if [ "$PATCH" = "" ]; then
+    echo
+    echo "Make your modifications. When you finished, input \"$GOON\" to go on."
+    echo "If you want to do some more patching, press ENTER."
+    read -p "INPUT > " INPUT
+    while true; do
+        if [ "$INPUT" = "$GOON" ]; then
+            FINISHED="yes"
+            break
+        elif [ "$INPUT" = "" ]; then
+            FINISHED="no"
+            break
+        else
+            echo
+            echo "Wrong input."
+            read -p "INPUT > " INPUT
+        fi
+    done
+else
+    while true; do
+        if [ -f "$PLACE/$PATCHES/$PATCH" ]; then
+            break
+        else
+            echo
+            echo "Wrong input."
+            read -p "INPUT > " PATCH
+        fi
+    done
+    echo
+    cd "$PLACE/$PREFIX/$NAME"
+    echo -n "Patching......"
+    patch -p1 < "$PLACE/$PATCHES/$PATCH"
+    echo "Done."
+    echo
+    echo "Marking used patches......"
+    mv "$PLACE/$PATCHES/$PATCH" "$PLACE/$PATCHES/done/"
+    echo "Done."
+    echo
+    echo "Finding rejected (*.rej + *.orig) and hunked (*.orig) files......"
+    find . -name "*.rej"
+    find . -name "*.orig"
+    echo
+    echo "Please check the patch. When you finished, input \"$GOON\" to go on."
+    echo "If you want to do some more patching, press ENTER."
+    read -p "INPUT > " INPUT
+    while true; do
+        if [ "$INPUT" = "$GOON" ]; then
+            FINISHED="yes"
+            break
+        elif [ "$INPUT" = "" ]; then
+            FINISHED="no"
+            break
+        else
+            echo
+            echo "Wrong input."
+            read -p "INPUT > " INPUT
+        fi
+    done
+fi
+if [ "$FINISHED" = "yes" ]; then
+    break
+fi
+done
+
+echo
+echo "Making commit......"
+cd $PLACE/$PREFIX/$NAME
+find . -name "*~" -exec rm -f {} \; > /dev/null
+find . -name "*.rej" -exec rm -f {} \; > /dev/null
+find . -name "*.orig" -exec rm -f {} \; > /dev/null
+git add --all
+rm -f /tmp/commit.txt
+echo
+echo "Please input a commit message. When you finished, input \"$GOON\" to go on."
+read -p "INPUT > " COMMIT
+while true; do
+    if [ "$COMMIT" = "$GOON" ]; then
+        break
+    else
+        echo "$COMMIT" >> /tmp/commit.txt
+        read -p "INPUT > " COMMIT
+    fi
+done
+git commit --all --file=/tmp/commit.txt
+rm -f /tmp/commit.txt
+echo "Done."
+
+echo
+echo "Pushing......"
+cd $PLACE/$PREFIX/$NAME
+git push -u
+echo "Done."

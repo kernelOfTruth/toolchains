@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#create working directory variable - automatic - will detect whatever directory you extract the
+#source package too
+PLACE=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+
+cd $PLACE/$1/
+echo "#!/bin/sh" > $PLACE/to_delete.sh
+find . -name "*" | while read FILE ; do
+        if [ -d $FILE ] ; then continue; fi ;
+        diff -q $FILE $PLACE/$2/$FILE > /dev/null ;
+        if [ $? = 0 ]; then echo "rm -f "$PLACE/$1/$FILE >> $PLACE/to_delete.sh; fi;
+done

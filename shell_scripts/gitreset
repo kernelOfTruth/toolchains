@@ -1,0 +1,23 @@
+#!/bin/bash
+
+PLACE=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+PREFIX=sources
+
+clear
+echo
+ls "$PLACE/$PREFIX" | while read DIR ; do if [ -d $PLACE/$PREFIX/$DIR/.git ]; then echo $DIR; fi; done
+echo
+read -p "Please input the name of the git as listed > " NAME
+
+echo
+cd $PLACE/$PREFIX/$NAME
+git log --pretty=format:"%h : %s"
+echo
+read -p "Please input the if of the commit as listed > " COMMIT
+
+echo
+echo -n "Resetting......"
+cd $PLACE/$PREFIX/$NAME
+git reset --hard $COMMIT
+git push -u --force
+echo "Done."

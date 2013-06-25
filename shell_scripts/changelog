@@ -1,0 +1,27 @@
+#!/bin/bash
+
+GOON=$(cat /dev/urandom | head -1 | md5sum | head -c 3)
+PLACE=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+NAME=$(whoami | sed 's/\b[a-z]/\U&/g')
+VERSION=n9
+KNAME=HydraCoreNirvana
+KFILE=$NAME"_"$KNAME"_"$VERSION
+
+echo
+echo "Write your changelog. When you finished, input \"$GOON\" to go on."
+read -p "INPUT > " INPUT
+if [ "$INPUT" = "$GOON" ]; then
+    echo "There is no changelog."
+else
+    echo "Changelog:" > $PLACE/$KFILE/Changelog.txt
+    COUNTER=1
+    while true; do
+        if [ "$INPUT" = "$GOON" ]; then
+            break
+        else
+            echo $COUNTER".""$INPUT" >> $PLACE/$KFILE/Changelog.txt
+            COUNTER=$(expr $COUNTER + 1)
+            read -p "INPUT > " INPUT
+        fi
+    done
+fi
