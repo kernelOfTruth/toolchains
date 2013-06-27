@@ -9,35 +9,34 @@ echo "Setting up parameters......"
 GOON=$(cat /dev/urandom | head -1 | md5sum | head -c 3)
 PLACE=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 PREFIX=sources
-NAME=$(whoami)
+NAME=$(whoami | sed 's/^\w\|\s\w/\U&/g')
 if [ "$1" = "" ]; then
-    HOST=testbuild
-    VERSION=$(date +v%y.%m.%d.%H%M)
+    HOST=Testbuild
+    VERSION=$(date +v%y%m%d.%H%M)
 else
-    HOST=release
+    HOST=Release
     VERSION=$1
 fi
 KNAME=HydraNirvana
 KFILE=$NAME"_"$KNAME"_"$VERSION
 ARCH=arm
 DEFCONFIG=q1_speedmod_defconfig
-PLATFORM=linux
-# PLATFORM=cygwin
-KSOURCE=android_kernel_samsung_smdk4210
-ISOURCE=initramfs_speedmod_combined
-# ISOURCE=initramfs_n7000
-FSOURCE=hydracorenirvana_flashable
-TSOURCE=toolchains
 STEMP=source_temp
 ITEMP=initramfs_temp
 FTEMP=flashable_temp
 TTEMP=toolchain_temp
+KSOURCE=android_kernel_samsung_smdk4210
+ISOURCE=initramfs_speedmod_combined
+# ISOURCE=initramfs_n7000
+TSOURCE=toolchains
+FSOURCE=$TSOURCE/hydracorenirvana_flashable
 TCNAME=arm-linux-androideabi
 # TCVERSION=4.6
 # TCVERSION=4.6.3
 # TCVERSION=4.7
 TCVERSION=4.7.linaro
-TCROOT=$TSOURCE/$PLATFORM/$TCNAME-$TCVERSION
+# TCVERSION=4.8.linaro
+TCROOT=$TSOURCE/cross_compile/$TCNAME-$TCVERSION
 TOOLCHAIN=$TTEMP/bin/$TCNAME-
 SROOT=$TTEMP/sysroot
 echo "Done."
@@ -174,7 +173,7 @@ if [ "$INPUT" = "$GOON" ]; then
 else
 echo "Uploading result to sftp server..."
 sftp maxfu@frs.sourceforge.net << EOF
-cd "/home/pfs/project/maxfuacm/Galaxy Note/MaxFu_HydraCore/$HOST"
+cd "/home/pfs/project/maxfuacm/GT-N7000/HydraNirvana/$HOST"
 mkdir $VERSION
 cd $VERSION
 mkdir Modules
@@ -186,7 +185,7 @@ put $PLACE/$KFILE/Modules/*
 exit
 EOF
 echo
-echo 'Upload Complete. Your result is in http://sourceforge.net/projects/maxfuacm/files/Galaxy%20Note/MaxFu_HydraCore/'$HOST/$VERSION'.'
+echo 'Upload Complete. Your result is in http://sourceforge.net/projects/maxfuacm/files/GT-N7000/HydraNirvana/'$HOST/$VERSION'.'
 echo "Done"
 fi
 

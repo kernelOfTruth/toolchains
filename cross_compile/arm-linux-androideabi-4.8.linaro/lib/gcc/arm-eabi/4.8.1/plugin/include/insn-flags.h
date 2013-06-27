@@ -5,7 +5,9 @@
 #define GCC_INSN_FLAGS_H
 
 #define HAVE_addsi3_compare0 (TARGET_ARM)
+#define HAVE_cmpsi2_addneg (TARGET_32BIT && INTVAL (operands[2]) == -INTVAL (operands[3]))
 #define HAVE_thumb1_subsi3_insn (TARGET_THUMB1)
+#define HAVE_subsi3_compare (TARGET_32BIT)
 #define HAVE_mulhisi3 (TARGET_DSP_MULTIPLY)
 #define HAVE_maddhisi4 (TARGET_DSP_MULTIPLY)
 #define HAVE_maddhidi4 (TARGET_DSP_MULTIPLY)
@@ -369,7 +371,6 @@
 #define HAVE_andv2sf3 (TARGET_NEON)
 #define HAVE_andv4sf3 (TARGET_NEON)
 #define HAVE_andv2di3 (TARGET_NEON)
-#define HAVE_anddi3_neon (TARGET_NEON)
 #define HAVE_ornv8qi3_neon (TARGET_NEON)
 #define HAVE_ornv16qi3_neon (TARGET_NEON)
 #define HAVE_ornv4hi3_neon (TARGET_NEON)
@@ -831,6 +832,8 @@
 #define HAVE_neon_vcvtv4sf (TARGET_NEON)
 #define HAVE_neon_vcvtv2si (TARGET_NEON)
 #define HAVE_neon_vcvtv4si (TARGET_NEON)
+#define HAVE_neon_vcvtv4sfv4hf (TARGET_NEON && TARGET_FP16)
+#define HAVE_neon_vcvtv4hfv4sf (TARGET_NEON && TARGET_FP16)
 #define HAVE_neon_vcvt_nv2sf (TARGET_NEON)
 #define HAVE_neon_vcvt_nv4sf (TARGET_NEON)
 #define HAVE_neon_vcvt_nv2si (TARGET_NEON)
@@ -1438,12 +1441,10 @@
 #define HAVE_arm_usatsihi (TARGET_INT_SIMD)
 #define HAVE_adddi3 1
 #define HAVE_addsi3 1
-#define HAVE_incscc (TARGET_32BIT)
 #define HAVE_addsf3 (TARGET_32BIT && TARGET_HARD_FLOAT)
 #define HAVE_adddf3 (TARGET_32BIT && TARGET_HARD_FLOAT && !TARGET_VFP_SINGLE)
 #define HAVE_subdi3 1
 #define HAVE_subsi3 1
-#define HAVE_decscc (TARGET_32BIT)
 #define HAVE_subsf3 (TARGET_32BIT && TARGET_HARD_FLOAT)
 #define HAVE_subdf3 (TARGET_32BIT && TARGET_HARD_FLOAT && !TARGET_VFP_SINGLE)
 #define HAVE_mulsi3 1
@@ -2410,7 +2411,9 @@
 #define HAVE_ssmulha3 (TARGET_32BIT && TARGET_DSP_MULTIPLY && arm_arch6)
 #define HAVE_usmuluha3 (TARGET_INT_SIMD)
 extern rtx        gen_addsi3_compare0                   (rtx, rtx, rtx);
+extern rtx        gen_cmpsi2_addneg                     (rtx, rtx, rtx, rtx);
 extern rtx        gen_thumb1_subsi3_insn                (rtx, rtx, rtx);
+extern rtx        gen_subsi3_compare                    (rtx, rtx, rtx);
 extern rtx        gen_mulhisi3                          (rtx, rtx, rtx);
 extern rtx        gen_maddhisi4                         (rtx, rtx, rtx, rtx);
 extern rtx        gen_maddhidi4                         (rtx, rtx, rtx, rtx);
@@ -2780,7 +2783,6 @@ extern rtx        gen_andv4si3                          (rtx, rtx, rtx);
 extern rtx        gen_andv2sf3                          (rtx, rtx, rtx);
 extern rtx        gen_andv4sf3                          (rtx, rtx, rtx);
 extern rtx        gen_andv2di3                          (rtx, rtx, rtx);
-extern rtx        gen_anddi3_neon                       (rtx, rtx, rtx);
 extern rtx        gen_ornv8qi3_neon                     (rtx, rtx, rtx);
 extern rtx        gen_ornv16qi3_neon                    (rtx, rtx, rtx);
 extern rtx        gen_ornv4hi3_neon                     (rtx, rtx, rtx);
@@ -3238,6 +3240,8 @@ extern rtx        gen_neon_vcvtv2sf                     (rtx, rtx, rtx);
 extern rtx        gen_neon_vcvtv4sf                     (rtx, rtx, rtx);
 extern rtx        gen_neon_vcvtv2si                     (rtx, rtx, rtx);
 extern rtx        gen_neon_vcvtv4si                     (rtx, rtx, rtx);
+extern rtx        gen_neon_vcvtv4sfv4hf                 (rtx, rtx);
+extern rtx        gen_neon_vcvtv4hfv4sf                 (rtx, rtx);
 extern rtx        gen_neon_vcvt_nv2sf                   (rtx, rtx, rtx, rtx);
 extern rtx        gen_neon_vcvt_nv4sf                   (rtx, rtx, rtx, rtx);
 extern rtx        gen_neon_vcvt_nv2si                   (rtx, rtx, rtx, rtx);
@@ -3824,12 +3828,10 @@ extern rtx        gen_arm_ssatsihi_shift                (rtx, rtx, rtx, rtx);
 extern rtx        gen_arm_usatsihi                      (rtx, rtx);
 extern rtx        gen_adddi3                            (rtx, rtx, rtx);
 extern rtx        gen_addsi3                            (rtx, rtx, rtx);
-extern rtx        gen_incscc                            (rtx, rtx, rtx, rtx);
 extern rtx        gen_addsf3                            (rtx, rtx, rtx);
 extern rtx        gen_adddf3                            (rtx, rtx, rtx);
 extern rtx        gen_subdi3                            (rtx, rtx, rtx);
 extern rtx        gen_subsi3                            (rtx, rtx, rtx);
-extern rtx        gen_decscc                            (rtx, rtx, rtx, rtx);
 extern rtx        gen_subsf3                            (rtx, rtx, rtx);
 extern rtx        gen_subdf3                            (rtx, rtx, rtx);
 extern rtx        gen_mulsi3                            (rtx, rtx, rtx);
